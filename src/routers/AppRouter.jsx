@@ -19,12 +19,12 @@ export const AppRouter = () => {
                     <Switch>
                         <Route
                             exact
-                            path="/"
+                            path="/hangman-react/"
                             component={MenuScreen}
                         />
                         <Route
                             exact
-                            path="/play"
+                            path="/hangman-react/play"
                             component={PlayScreen}
                         />
 
