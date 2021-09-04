@@ -1,5 +1,6 @@
 {
   "name": "hangman-react",
+  "homepage": "https://guirdo.github.io/hangman-react/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
