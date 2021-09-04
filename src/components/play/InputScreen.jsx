@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { Button, Col, Form,Row } from "react-bootstrap"
+import { Button, Col, Form, Row } from "react-bootstrap"
 import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm"
 import { Context } from '../../reducer/Context'
@@ -11,12 +11,14 @@ export const InputScreen = () => {
 
     const history = useHistory();
 
-    const { game: { word },dispatch } = useContext(Context)
+    const { game: { word }, dispatch } = useContext(Context)
 
     const [rightLetters, setRightLetters] = useState([...word.toLowerCase().split('')])
     const [wrongLetters, setWrongLetters] = useState([])
+    const [disable, setDisable] = useState(false)
+    const [hasWon, setHasWon] = useState(false)
 
-    const [formValues, handleInputChange,reset] = useForm({
+    const [formValues, handleInputChange, reset] = useForm({
         letter: ''
     });
 
@@ -29,8 +31,8 @@ export const InputScreen = () => {
             setRightLetters(rl => rl.map(
                 le => le === letter ? letter.toUpperCase() : le
             ))
-        }else{
-            setWrongLetters( wl => [...wl,letter])
+        } else {
+            setWrongLetters(wl => [...wl, letter])
 
             dispatch({
                 type: types.count_error,
@@ -41,24 +43,31 @@ export const InputScreen = () => {
         reset()
     }
 
-    const handleSorry = () =>{
+    const handleRestart = () => {
         history.replace('/')
     }
 
     useEffect(() => {
-        if(wrongLetters.length === 7){
-            alert('Has perdido!')
+        if (wrongLetters.length === 7) {
+            alert('You lose!')
+            setDisable(true)
         }
-    }, [rightLetters,wrongLetters])
+
+        if (rightLetters.toString() === rightLetters.toString().toUpperCase()) {
+            alert('You won!')
+            setDisable(true)
+            setHasWon(true)
+        }
+    }, [rightLetters, wrongLetters])
 
     return (
         <Col className="p-3">
 
             <Row className="justify-content-center my-4">
                 {
-                    rightLetters.map( (le,i) => (
-                        <LetterScreen 
-                            key={`${le}-${ i }`}
+                    rightLetters.map((le, i) => (
+                        <LetterScreen
+                            key={`${le}-${i}`}
                             letter={le}
                         />
                     ))
@@ -76,31 +85,46 @@ export const InputScreen = () => {
                         value={letter}
                         onChange={handleInputChange}
                         autoComplete="off"
+                        disabled={disable}
                     />
 
                     <Button
                         className="mt-3"
                         variant="primary"
                         type="submit"
+                        disabled={disable}
                     >
                         Confirm
                     </Button>
                 </Form.Group>
             </Form>
-            
+
             <WrongLetters
                 letters={wrongLetters}
             />
 
-            {
-                wrongLetters.length === 7 && 
+            <Row className="justify-content-center">
+                {
+                    wrongLetters.length === 7 &&
                     <Button
                         variant={'warning'}
-                        onClick={ handleSorry }
+                        onClick={handleRestart}
+                        className="col-7 animate__animated animate__rubberBand"
                     >
-                        Sorry, click here! 
+                        Sorry, try again!
                     </Button>
-            }
+                }
+                {
+                    hasWon &&
+                    <Button
+                        variant='success'
+                        onClick={handleRestart}
+                        className="col-7 animate__animated animate__rubberBand"
+                    >
+                        Congratulations! Keep it up!
+                    </Button>
+                }
+            </Row>
         </Col>
     )
 }

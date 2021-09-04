@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Col } from 'react-bootstrap';
 import { draw } from '../../drawing/draw';
 import { useCanvas } from '../../hooks/useCanvas'
+import { Context } from '../../reducer/Context';
 
-export const DeathScreen = ({ count }) => {
+export const DeathScreen = () => {
+    const { game: { count } } = useContext(Context)
 
     const canvasRef = useCanvas(draw, count);
 

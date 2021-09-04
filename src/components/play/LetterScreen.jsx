@@ -2,7 +2,10 @@ import { Col } from 'react-bootstrap'
 
 export const LetterScreen = ({ letter }) => {
     return (
-        <Col sm={1}>
+        <Col 
+            sm={1}
+            className="animate__animated animate__bounce"
+        >
             <Col>
                 <p className={`${letter === letter.toUpperCase() ? 'text-dark' : 'text-white' } text-center letter-bold`}>
                     {

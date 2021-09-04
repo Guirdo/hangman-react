@@ -34,7 +34,7 @@ export const MenuScreen = ({ history }) => {
     }
 
     return (
-        <Row className="justify-content-center">
+        <Row className="justify-content-center animate__animated animate__backInUp">
             <div className="col-6 bg-success p-3">
                 <h1 className="text-white">Menu</h1>
 
