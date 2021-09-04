@@ -44,7 +44,7 @@ export const InputScreen = () => {
     }
 
     const handleRestart = () => {
-        history.replace('/hangman-react/')
+        history.replace('/')
     }
 
     useEffect(() => {

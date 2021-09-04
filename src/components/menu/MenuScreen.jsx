@@ -30,7 +30,7 @@ export const MenuScreen = ({ history }) => {
             }
         })
 
-        history.replace('/hangman-react/play');
+        history.replace('play');
     }
 
     return (
