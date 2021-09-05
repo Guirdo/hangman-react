@@ -1,6 +1,6 @@
 import { Row } from "react-bootstrap";
 import {
-    BrowserRouter as Router,
+    HashRouter,
     Switch,
     Route,
     Redirect
@@ -11,7 +11,7 @@ import { Navbar } from "../components/ui/Navbar"
 
 export const AppRouter = () => {
     return (
-        <Router>
+        <HashRouter>
             <Navbar />
 
             <Row className="justify-content-center my-3 mx-0">
@@ -32,6 +32,6 @@ export const AppRouter = () => {
                     </Switch>
                 </div>
             </Row>
-        </Router>
+        </HashRouter>
     )
 }
