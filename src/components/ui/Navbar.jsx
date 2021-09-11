@@ -12,15 +12,18 @@ export const Navbar = () => {
                 The hangman, give it a hang
             </Link>
 
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
-
-                   
-                </div>
-            </div>
-
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <div className="navbar-collapse collapse  dual-collapse2">
                 <ul className="navbar-nav ml-auto">
+                <li className="nav-item" >
+                        <a
+                            className="nav-link"
+                            href="https://guirdo.github.io/#/"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            About me
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
