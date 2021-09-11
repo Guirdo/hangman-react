@@ -4,8 +4,7 @@ import { useEffect, useReducer } from "react"
 import { reducer } from "./reducer/reducer"
 
 const init = () => {
-    return JSON.parse(localStorage.getItem('game'))
-        || {
+    return {
         word: 'Taco',
         count: 0,
         rightLetters: [],
