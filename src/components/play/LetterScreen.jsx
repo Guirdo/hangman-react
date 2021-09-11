@@ -7,13 +7,12 @@ export const LetterScreen = ({ letter }) => {
             className="animate__animated animate__bounce"
         >
             <Col>
-                <p className={`${letter === letter.toUpperCase() ? 'text-dark' : 'text-white' } text-center letter-bold`}>
+                <p className={'text-dark text-center letter-bold'}>
                     {
                         letter === letter.toUpperCase() ? letter : '__'
                     }
                 </p>
             </Col>
-            <Col className="text-center letter-bold">__</Col>
         </Col>
     )
 }

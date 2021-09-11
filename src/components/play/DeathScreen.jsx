@@ -5,9 +5,9 @@ import { useCanvas } from '../../hooks/useCanvas'
 import { Context } from '../../reducer/Context';
 
 export const DeathScreen = () => {
-    const { game: { count } } = useContext(Context)
+    const { game: { wrongLetters } } = useContext(Context)
 
-    const canvasRef = useCanvas(draw, count);
+    const canvasRef = useCanvas(draw, wrongLetters.length);
 
     return (
         <Col className="p-0">

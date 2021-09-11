@@ -4,23 +4,25 @@ import { useEffect, useReducer } from "react"
 import { reducer } from "./reducer/reducer"
 
 const init = () => {
-    return JSON.parse(localStorage.getItem('game')) 
-            || {
-                word:'Taco',
-                count: 0
-            }
+    return JSON.parse(localStorage.getItem('game'))
+        || {
+        word: 'Taco',
+        count: 0,
+        rightLetters: [],
+        wrongLetters: [],
+    }
 }
 
 export const HangmanApp = () => {
 
-    const [ game,dispatch ] = useReducer(reducer,{},init);
+    const [game, dispatch] = useReducer(reducer, {}, init);
 
     useEffect(() => {
-        localStorage.setItem('game',JSON.stringify(game))
+        localStorage.setItem('game', JSON.stringify(game))
     }, [game])
 
-    return(
-        <Context.Provider value={{ game,dispatch }}> 
+    return (
+        <Context.Provider value={{ game, dispatch }}>
             <AppRouter />
         </Context.Provider>
     )

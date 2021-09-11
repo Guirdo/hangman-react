@@ -1,7 +1,5 @@
 import React, { useContext } from 'react'
-import queryString from 'query-string'
 import { Button, Form, Row } from 'react-bootstrap'
-import { useLocation } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { Context } from '../../reducer/Context'
 import { types } from '../../reducer/types'
@@ -10,23 +8,20 @@ export const MenuScreen = ({ history }) => {
 
     const { game: { word }, dispatch } = useContext(Context);
 
-    const location = useLocation();
-    const { q: query = word } = queryString.parse(location.search);
-
     const [formValues, handlInputChange] = useForm({
-        wordSet: query
+        wordSet: word
     });
 
     const { wordSet } = formValues;
 
     const handleStart = (e) => {
         e.preventDefault();
-
+        
         dispatch({
             type: types.set_word,
             payload: {
                 word: wordSet,
-                count: 0
+                rightLetters: [...wordSet.toLowerCase().split('')],
             }
         })
 
