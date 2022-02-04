@@ -17,7 +17,7 @@ export const Navbar = () => {
                 <li className="nav-item" >
                         <a
                             className="nav-link"
-                            href="https://guirdo.github.io/#/"
+                            href="https://guirdo-blog.vercel.app/"
                             target="_blank"
                             rel="noreferrer"
                         >
